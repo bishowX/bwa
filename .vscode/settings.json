@@ -1,7 +1,5 @@
 {
-  "tailwindCSS.experimental.classRegex": [
-    ["ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["/\\*ui\\*/\\s*{([^;]*)}", ":\\s*[\"'`]([^\"'`]*).*?[\"'`]"]
-  ],
-  "tailwindCSS.classAttributes": ["class", "className", "ui"]
+  "tailwindCSS.classAttributes": ["class", "className", "ui"],
+  "tailwindCSS.experimental.configFile": "tailwind.config.ts",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -10,12 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/ui-pro": "^0.7.5",
     "nuxt": "^3.10.1",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@nuxt/ui": "^2.13.0"
+    "@nuxt/ui": "^2.13.0",
+    "typescript": "^5.3.3"
   },
   "engines": {
     "npm": "please use bun 🫣️",
