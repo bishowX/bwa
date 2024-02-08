@@ -144,7 +144,9 @@ const accountDropdownItems = [
 <template>
   <div class="w-full flex items-center gap-4">
     <!-- logo -->
-    <Icon name="uil:github" size="36" class="shrink-0" />
+    <NuxtLink to="/"
+      ><Icon name="uil:github" size="36" class="shrink-0"
+    /></NuxtLink>
     <UHeaderLinks
       :links="links"
       class="border-b grow py-4 border-gray-200 dark:border-gray-800"
