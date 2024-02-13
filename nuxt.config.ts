@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxtjs/google-fonts"],
   extends: ["@nuxt/ui-pro"],
-  css: ["~/assets/css/main.css"],
+  css: ["~/assets/css/tailwind.css"],
   components: [
     {
       path: "~/components",

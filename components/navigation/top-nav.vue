@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import { HoverCardArrow, HoverCardContent, HoverCardPortal, HoverCardRoot, HoverCardTrigger } from "radix-vue";
+
+const analysisHoverState = ref(false);
+const forecastsHoverState = ref(false);
+const exploreHoverState = ref(false);
+const mediaHoverState = ref(false);
+
 const links = [
   {
     icon: "i-heroicons-chart-pie",
@@ -139,11 +147,138 @@ const accountDropdownItems = [
 
 <template>
   <div
-    class="sticky top-0 z-10 bg-background w-full flex items-center gap-4 border-b border-gray-200 dark:border-gray-800"
+    class="sticky py-2 top-0 z-10 bg-background w-full flex items-center gap-4 border-b border-gray-200 dark:border-gray-800"
   >
     <!-- logo -->
     <NuxtLink to="/"><Icon name="uil:github" size="36" class="shrink-0" /></NuxtLink>
-    <UHeaderLinks :links="links" class="grow py-4" />
+    <!-- <UHeaderLinks :links="links" class="grow py-4" /> -->
+    <div class="flex items-center gap-4 grow">
+      <NuxtLink class="hover:text-primary-400" to="/situation-reports">Situation Reports</NuxtLink>
+      <HoverCardRoot v-model:open="analysisHoverState" :open-delay="100" :close-delay="100">
+        <HoverCardTrigger class="group cursor-pointer hover:text-primary-400">
+          Analysis
+          <Icon
+            name="radix-icons:caret-down"
+            class="relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+            aria-hidden
+          />
+        </HoverCardTrigger>
+        <HoverCardPortal>
+          <HoverCardContent
+            @click="analysisHoverState = false"
+            class="z-10 w-44 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade rounded-md data-[state=open]:transition-all"
+            :side-offset="5"
+          >
+            <ul class="list-none flex flex-col bg-background shadow-2xl rounded">
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full px-4 py-2 h-full inline-block" to="/analysis/assesments">Assesments</NuxtLink>
+              </li>
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full px-4 py-2 h-full inline-block" to="/analysis/snapshots">Snapshots</NuxtLink>
+              </li>
+            </ul>
+
+            <HoverCardArrow class="fill-slate-900 dark:fill-white" size="8" />
+          </HoverCardContent>
+        </HoverCardPortal>
+      </HoverCardRoot>
+
+      <HoverCardRoot v-model:open="forecastsHoverState" :open-delay="100" :close-delay="100">
+        <HoverCardTrigger class="group cursor-pointer hover:text-primary-400">
+          Forecasts<Icon
+            name="radix-icons:caret-down"
+            class="relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+            aria-hidden
+          />
+        </HoverCardTrigger>
+        <HoverCardPortal>
+          <HoverCardContent
+            @click="forecastsHoverState = false"
+            class="z-10 w-44 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade rounded-md data-[state=open]:transition-all"
+            :side-offset="5"
+          >
+            <ul class="list-none flex flex-col bg-background shadow-2xl rounded">
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full py-2 px-4 h-full inline-block" to="/forecasts/all">All Forecasts</NuxtLink>
+              </li>
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full py-2 px-4 h-full inline-block" to="/forecasts/quarterly"
+                  >Quaterly Forecasts</NuxtLink
+                >
+              </li>
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full py-2 px-4 h-full inline-block" to="/forecasts/annual"
+                  >Annual Forecasts</NuxtLink
+                >
+              </li>
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full py-2 px-4 h-full inline-block" to="/forecasts/decade"
+                  >Decade Forecasts</NuxtLink
+                >
+              </li>
+            </ul>
+
+            <HoverCardArrow class="fill-slate-900 dark:fill-white" size="8" />
+          </HoverCardContent>
+        </HoverCardPortal>
+      </HoverCardRoot>
+
+      <HoverCardRoot v-model:open="exploreHoverState" :open-delay="100" :close-delay="100">
+        <HoverCardTrigger class="group cursor-pointer hover:text-primary-400">
+          Explore<Icon
+            name="radix-icons:caret-down"
+            class="relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+            aria-hidden
+          />
+        </HoverCardTrigger>
+        <HoverCardPortal>
+          <HoverCardContent
+            @click="exploreHoverState = false"
+            class="z-10 w-44 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade rounded-md data-[state=open]:transition-all"
+            :side-offset="5"
+          >
+            <ul class="list-none flex flex-col bg-background shadow-2xl rounded">
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full px-4 py-2 h-full inline-block" to="/explore/regions">Regions</NuxtLink>
+              </li>
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full px-4 py-2 h-full inline-block" to="/explore/topics">Topics</NuxtLink>
+              </li>
+            </ul>
+
+            <HoverCardArrow class="fill-slate-900 dark:fill-white" size="8" />
+          </HoverCardContent>
+        </HoverCardPortal>
+      </HoverCardRoot>
+
+      <HoverCardRoot v-model:open="mediaHoverState" :open-delay="100" :close-delay="100">
+        <HoverCardTrigger class="group cursor-pointer hover:text-primary-400">
+          Media<Icon
+            name="radix-icons:caret-down"
+            class="relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+            aria-hidden
+          />
+        </HoverCardTrigger>
+        <HoverCardPortal>
+          <HoverCardContent
+            @click="mediaHoverState = false"
+            class="z-10 w-44 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade rounded-md data-[state=open]:transition-all"
+            :side-offset="5"
+          >
+            <ul class="list-none flex flex-col bg-background shadow-2xl rounded">
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full px-4 py-2 h-full inline-block" to="/media/graphics">Graphics</NuxtLink>
+              </li>
+              <li class="hover:bg-primary-500 dark:text-white hover:text-white rounded">
+                <NuxtLink class="w-full px-4 py-2 h-full inline-block" to="/media/podcasts">Podcasts</NuxtLink>
+              </li>
+            </ul>
+
+            <HoverCardArrow class="fill-slate-900 dark:fill-white" size="8" />
+          </HoverCardContent>
+        </HoverCardPortal>
+      </HoverCardRoot>
+    </div>
     <div class="flex items-center gap-4">
       <UInput placeholder="Search" icon="i-heroicons-magnifying-glass" />
       <UButton icon="i-heroicons-globe-asia-australia" variant="soft"></UButton>
