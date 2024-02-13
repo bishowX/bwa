@@ -9,4 +9,10 @@ export default <Partial<Config>>{
     "./app.vue",
     "./error.vue",
   ],
+  theme: {
+    fontFamily: {
+      sans: ["Inter"],
+      body: ["Inter"],
+    },
+  },
 };

@@ -28,29 +28,25 @@ const links = [
         label: "All Forecasts",
         to: "/forecasts/all",
         icon: "i-heroicons-credit-card",
-        description:
-          "Amazing forecasts that everyone will love. dive into these forecasts to know more.",
+        description: "Amazing forecasts that everyone will love. dive into these forecasts to know more.",
       },
       {
         label: "Quaterly Forecasts",
         to: "/forecasts/quaterly",
         icon: "i-heroicons-adjustments-horizontal",
-        description:
-          "Amazing forecasts that everyone will love. dive into these forecasts to know more.",
+        description: "Amazing forecasts that everyone will love. dive into these forecasts to know more.",
       },
       {
         label: "Annual Forecasts",
         to: "/forecasts/annual",
         icon: "i-heroicons-battery-100",
-        description:
-          "Amazing forecasts that everyone will love. dive into these forecasts to know more.",
+        description: "Amazing forecasts that everyone will love. dive into these forecasts to know more.",
       },
       {
         label: "Decade Forecasts",
         to: "/forecasts/decade",
         icon: "i-heroicons-rocket-launch",
-        description:
-          "Amazing forecasts that everyone will love. dive into these forecasts to know more.",
+        description: "Amazing forecasts that everyone will love. dive into these forecasts to know more.",
       },
     ],
   },
@@ -142,21 +138,27 @@ const accountDropdownItems = [
 </script>
 
 <template>
-  <div class="w-full flex items-center gap-4">
+  <div
+    class="sticky top-0 z-10 bg-background w-full flex items-center gap-4 border-b border-gray-200 dark:border-gray-800"
+  >
     <!-- logo -->
-    <NuxtLink to="/"
-      ><Icon name="uil:github" size="36" class="shrink-0"
-    /></NuxtLink>
-    <UHeaderLinks
-      :links="links"
-      class="border-b grow py-4 border-gray-200 dark:border-gray-800"
-    />
-    <div class="shrink-0 flex items-center gap-4">
-      <UDropdown
-        v-if="isSignedIn"
-        :items="accountDropdownItems"
-        :popper="{ placement: 'bottom-start' }"
+    <NuxtLink to="/"><Icon name="uil:github" size="36" class="shrink-0" /></NuxtLink>
+    <UHeaderLinks :links="links" class="grow py-4" />
+    <div class="flex items-center gap-4">
+      <UInput placeholder="Search" icon="i-heroicons-magnifying-glass" />
+      <UButton icon="i-heroicons-globe-asia-australia" variant="soft"></UButton>
+      <ULink
+        to="/shop"
+        active-class="text-primary"
+        inactive-class="text-gray-500 dark:text-gray-400 hover:text-green-700 dark:hover:text-green-400"
+        >Shop</ULink
       >
+      <UButton>Subscribe</UButton>
+    </div>
+    <div class="w-4"></div>
+    <div class="shrink-0 flex items-center gap-4">
+      <ThemeToggle />
+      <UDropdown v-if="isSignedIn" :items="accountDropdownItems" :popper="{ placement: 'bottom-start' }">
         <UButton variant="ghost" size="2xs">
           <UAvatar
             icon="i-heroicons-user"
@@ -166,9 +168,7 @@ const accountDropdownItems = [
           />
         </UButton>
       </UDropdown>
-      <UButton v-else variant="link" type="button" @click="isSignedIn = true"
-        >Sign In</UButton
-      >
+      <UButton v-else variant="link" type="button" @click="isSignedIn = true">Sign In</UButton>
     </div>
   </div>
 </template>
